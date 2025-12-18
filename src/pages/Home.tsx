@@ -264,7 +264,7 @@ const Home: React.FC = () => {
       </div>
     </div>
 
-    {/* Freelancer – Full-Width Horizontal Banner Below */}
+   {/* Freelancer – Full-Width Horizontal Banner Below */}
 <div className="group relative bg-white/5 backdrop-blur-xl rounded-3xl overflow-hidden border border-white/10 hover:border-cyan-500 transition-all duration-500 shadow-2xl">
   <div className="aspect-[21/9] md:aspect-[32/9] relative overflow-hidden">
     <img 
@@ -295,18 +295,19 @@ const Home: React.FC = () => {
         <Accordion key={job.name} className="bg-white/10 rounded-2xl overflow-hidden shadow-lg">
           <AccordionSummary
             expandIcon={<ChevronDownIcon className="w-6 h-6 text-gray-400" />}
-            className={`p-5 hover:bg-${job.color}-500/20 transition duration-300 cursor-pointer`}
+            className={`p-5 hover:bg-${job.color}-500/20 transition duration-300 cursor-pointer flex items-center justify-center`}
           >
-            <span className="font-semibold text-gray-200 text-center w-full">{job.name}</span>
+            <span className="font-semibold text-gray-200">{job.name}</span>
           </AccordionSummary>
           <AccordionDetails className="p-5 bg-white/5">
-            <p className="text-gray-300">{job.description}</p>
+            <p className="text-gray-300 text-sm">{job.description}</p>
           </AccordionDetails>
         </Accordion>
       ))}
     </div>
   </div>
 </div>
+  </div>
 </section>
     </div>
   );
