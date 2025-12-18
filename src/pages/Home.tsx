@@ -199,20 +199,21 @@ const Home: React.FC = () => {
         </div>
  
       </section>
-      {/* Factions Section – Upgraded Professional Version */}
+      {/* Factions Section – Professional Bento Grid Layout */}
 <section className="py-24 bg-slate-900/30">
   <div className="container mx-auto px-6 max-w-7xl">
     <h2 className="text-5xl font-bold text-center mb-16 bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
       Factions & Opportunities
     </h2>
 
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+    {/* Bento Grid */}
+    <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-8 mb-8">
       {/* EMS */}
       <div className="group relative bg-white/5 backdrop-blur-xl rounded-3xl overflow-hidden border border-white/10 hover:border-emerald-500 transition-all duration-500 shadow-2xl">
         <div className="aspect-[4/3] relative overflow-hidden">
           <img 
-            src="https://img.gta5-mods.com/q75/images/2018-ford-xlt-f350-superduty-quad-cad-custom-ambulance-els/330616-20190828173812_1.jpg" 
-            alt="EMS Ambulance in action" 
+            src="https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=2369649800079979" 
+            alt="EMS paramedics responding to an emergency" 
             className="w-full h-full object-cover brightness-90 group-hover:brightness-110 group-hover:scale-105 transition duration-700"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
@@ -228,8 +229,8 @@ const Home: React.FC = () => {
       <div className="group relative bg-white/5 backdrop-blur-xl rounded-3xl overflow-hidden border border-white/10 hover:border-blue-500 transition-all duration-500 shadow-2xl">
         <div className="aspect-[4/3] relative overflow-hidden">
           <img 
-            src="https://www.dojrp.com/uploads/monthly_2023_11/large.1898489034_Screenshot2023-11-22184726.png.4ef01128d51d37a73843e9ed7592efed.png" 
-            alt="SASP Highway Patrol officers" 
+            src="https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=4159704957638165" 
+            alt="SASP officers on highway patrol" 
             className="w-full h-full object-cover brightness-90 group-hover:brightness-110 group-hover:scale-105 transition duration-700"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
@@ -245,8 +246,8 @@ const Home: React.FC = () => {
       <div className="group relative bg-white/5 backdrop-blur-xl rounded-3xl overflow-hidden border border-white/10 hover:border-amber-500 transition-all duration-500 shadow-2xl">
         <div className="aspect-[4/3] relative overflow-hidden">
           <img 
-            src="https://rockstarintel.com/wp-content/uploads/2024/09/DOJ-1024x549.jpg" 
-            alt="DOJ Courtroom proceedings" 
+            src="https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=10162507336822298" 
+            alt="DOJ courtroom proceedings" 
             className="w-full h-full object-cover brightness-90 group-hover:brightness-110 group-hover:scale-105 transition duration-700"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
@@ -257,28 +258,29 @@ const Home: React.FC = () => {
           <p className="text-gray-300 leading-relaxed">Judges, prosecutors, and defense attorneys conducting realistic trials and legal proceedings.</p>
         </div>
       </div>
+    </div>
 
-      {/* Freelancer – Expanded Civilian Jobs */}
-      <div className="group relative bg-white/5 backdrop-blur-xl rounded-3xl overflow-hidden border border-white/10 hover:border-cyan-500 transition-all duration-500 shadow-2xl lg:col-span-1 md:col-span-2">
-        <div className="aspect-[4/3] relative overflow-hidden">
-          <img 
-            src="https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=489358119922212" 
-            alt="Civilian life and jobs in the city" 
-            className="w-full h-full object-cover brightness-90 group-hover:brightness-110 group-hover:scale-105 transition duration-700"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-          <div className="absolute bottom-6 left-6 text-4xl font-black text-cyan-400 drop-shadow-2xl">Freelancer</div>
-        </div>
-        <div className="p-8">
-          <h3 className="text-2xl font-bold mb-6 text-cyan-400">Civilian Careers</h3>
-          <div className="grid grid-cols-2 lg:grid-cols-3 gap-4">
-            {['Bus Driver', 'Mechanic', 'Store Owner', 'Go Postal', 'Scuba Diving', 'Metal Detecting', 'Hunting', 'Fishing', 'Taxi Driver', 'City Electrician'].map((job) => (
-              <div key={job} className="bg-white/10 rounded-xl p-4 text-center hover:bg-white/20 hover:scale-105 transition duration-300">
-                <span className="font-medium">{job}</span>
-              </div>
-            ))}
-          </div>
-          <p className="text-gray-400 text-sm mt-6 text-center">Player-owned businesses and diverse public jobs for endless civilian RP possibilities.</p>
+    {/* Freelancer – Full-Width Horizontal Banner Below */}
+    <div className="group relative bg-white/5 backdrop-blur-xl rounded-3xl overflow-hidden border border-white/10 hover:border-cyan-500 transition-all duration-500 shadow-2xl">
+      <div className="aspect-[21/9] md:aspect-[32/9] relative overflow-hidden">
+        <img 
+          src="https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=760411349724951" 
+          alt="Diverse civilian life and jobs in the city" 
+          className="w-full h-full object-cover brightness-90 group-hover:brightness-110 group-hover:scale-105 transition duration-700"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
+        <div className="absolute bottom-8 left-8 text-5xl font-black text-cyan-400 drop-shadow-2xl">Freelancer / Civilian Careers</div>
+      </div>
+      <div className="p-10">
+        <p className="text-xl text-gray-300 mb-8 text-center max-w-5xl mx-auto">
+          Endless opportunities for player-driven stories—from public services to entrepreneurship.
+        </p>
+        <div className="grid grid-cols-2 md:grid-cols-5 lg:grid-cols-10 gap-6 max-w-6xl mx-auto">
+          {['Bus Driver', 'Mechanic', 'Store Owner', 'Go Postal', 'Scuba Diving', 'Metal Detecting', 'Hunting', 'Fishing', 'Taxi Driver', 'City Electrician'].map((job) => (
+            <div key={job} className="bg-white/10 rounded-2xl p-5 text-center hover:bg-white/20 hover:scale-110 transition duration-300 shadow-lg">
+              <span className="font-semibold text-gray-200">{job}</span>
+            </div>
+          ))}
         </div>
       </div>
     </div>
