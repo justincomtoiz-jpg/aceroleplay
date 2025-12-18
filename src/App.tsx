@@ -8,19 +8,7 @@ import DisclaimerPopup from './components/DisclaimerPopup';
 
 const App: React.FC = () => {
   return (
-    <Router>
-      <div className="flex flex-col min-h-screen">
-        <Header />
-        <main className="flex-1">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/rules" element={<Rules />} />
-            {/* Add more routes if new pages appear */}
-          </Routes>
-        </main>
-        <Footer />
-      </div>
-      
+   <Router>
     <div className="flex flex-col min-h-screen">
       <Header />
       <main className="flex-1">
@@ -32,9 +20,7 @@ const App: React.FC = () => {
       </main>
       <Footer />
     </div>
-
-    </Router>
-    
+  </Router>
   );
 };
 
