@@ -1,8 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { ChevronDownIcon } from '@heroicons/react/24/outline';
-import Accordion from '@mui/material/Accordion';
-import AccordionSummary from '@mui/material/AccordionSummary';
-import AccordionDetails from '@mui/material/AccordionDetails';
 import {
   ServerIcon,
   UsersIcon,
@@ -13,6 +9,7 @@ import {
   CurrencyDollarIcon,
   WrenchScrewdriverIcon,
   UserGroupIcon,
+  ChevronDownIcon,
 } from '@heroicons/react/24/outline';
 
 interface ServerInfo {
@@ -40,9 +37,11 @@ const Home: React.FC = () => {
 
   const [connectEndpoint, setConnectEndpoint] = useState<string>('45.92.36.118:30125');
 
+  const [openJob, setOpenJob] = useState<number | null>(null);
+
   const fetchServerStatus = async () => {
     setServerInfo(prev => ({ ...prev, loading: true }));
-    // (Same fetch logic as before – unchanged)
+
     try {
       const response = await fetch(`https://servers-frontend.fivem.net/api/servers/single/${cfxCode}`);
       if (!response.ok) throw new Error('API error');
@@ -138,32 +137,118 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* Features Section */}
-      <section className="py-24 bg-slate-900/50">
+      {/* Factions Section – Professional Bento Grid Layout */}
+      <section className="py-24 bg-slate-900/30">
         <div className="container mx-auto px-6 max-w-7xl">
           <h2 className="text-5xl font-bold text-center mb-16 bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
-            Why Choose Ace Roleplay?
+            Factions & Opportunities
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
-            <div className="bg-white/5 backdrop-blur-xl rounded-2xl p-8 border border-white/10 text-center hover:border-cyan-500 transition">
-              <CurrencyDollarIcon className="w-16 h-16 mx-auto mb-6 text-cyan-400" />
-              <h3 className="text-2xl font-semibold mb-4">Player-Driven Economy</h3>
-              <p className="text-gray-400">Businesses, jobs, and black markets shaped by community actions.</p>
+
+          {/* Top Row: EMS, SASP, DOJ */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+            {/* EMS */}
+            <div className="group relative bg-white/5 backdrop-blur-xl rounded-3xl overflow-hidden border border-white/10 hover:border-emerald-500 transition-all duration-500 shadow-2xl">
+              <div className="aspect-[4/3] relative overflow-hidden">
+                <img 
+                  src="https://img.gta5-mods.com/q95/images/sams-speedo-express-ambulance-minipack-vehicles-eup-lore-friendly-add-on/76da9c-271590_20200420152007_1.jpg" 
+                  alt="EMS paramedics responding to an emergency" 
+                  className="w-full h-full object-cover brightness-90 group-hover:brightness-110 group-hover:scale-105 transition duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                <div className="absolute bottom-6 left-6 text-4xl font-black text-emerald-400 drop-shadow-2xl">EMS</div>
+              </div>
+              <div className="p-8">
+                <h3 className="text-2xl font-bold mb-4 text-emerald-400">Emergency Medical Services</h3>
+                <p className="text-gray-300 leading-relaxed">Dedicated paramedics and firefighters delivering critical care in high-pressure scenarios with advanced medical scripting.</p>
+              </div>
             </div>
-            <div className="bg-white/5 backdrop-blur-xl rounded-2xl p-8 border border-white/10 text-center hover:border-cyan-500 transition">
-              <WrenchScrewdriverIcon className="w-16 h-16 mx-auto mb-6 text-purple-400" />
-              <h3 className="text-2xl font-semibold mb-4">Custom Scripts & MLOs</h3>
-              <p className="text-gray-400">Unique features and detailed interiors for immersive RP.</p>
+
+            {/* SASP */}
+            <div className="group relative bg-white/5 backdrop-blur-xl rounded-3xl overflow-hidden border border-white/10 hover:border-blue-500 transition-all duration-500 shadow-2xl">
+              <div className="aspect-[4/3] relative overflow-hidden">
+                <img 
+                  src="https://s3-screenshots.int-cdn.lcpdfrusercontent.com/monthly_2024_09/1.jpg.925458cd90220591514e848a53d16a94.jpg" 
+                  alt="SASP officers on highway patrol" 
+                  className="w-full h-full object-cover brightness-90 group-hover:brightness-110 group-hover:scale-105 transition duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                <div className="absolute bottom-6 left-6 text-4xl font-black text-blue-400 drop-shadow-2xl">SASP</div>
+              </div>
+              <div className="p-8">
+                <h3 className="text-2xl font-bold mb-4 text-blue-400">San Andreas State Police</h3>
+                <p className="text-gray-300 leading-relaxed">Professional law enforcement with structured ranks, highway patrol, investigations, and tactical units.</p>
+              </div>
             </div>
-            <div className="bg-white/5 backdrop-blur-xl rounded-2xl p-8 border border-white/10 text-center hover:border-cyan-500 transition">
-              <UserGroupIcon className="w-16 h-16 mx-auto mb-6 text-emerald-400" />
-              <h3 className="text-2xl font-semibold mb-4">Active Factions</h3>
-              <p className="text-gray-400">Police, EMS, Gangs, and Civilian organizations with deep lore.</p>
+
+            {/* DOJ */}
+            <div className="group relative bg-white/5 backdrop-blur-xl rounded-3xl overflow-hidden border border-white/10 hover:border-amber-500 transition-all duration-500 shadow-2xl">
+              <div className="aspect-[4/3] relative overflow-hidden">
+                <img 
+                  src="https://rockstarintel.com/wp-content/uploads/2024/09/DOJ-1024x549.jpg" 
+                  alt="DOJ courtroom proceedings" 
+                  className="w-full h-full object-cover brightness-90 group-hover:brightness-110 group-hover:scale-105 transition duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                <div className="absolute bottom-6 left-6 text-4xl font-black text-amber-400 drop-shadow-2xl">DOJ</div>
+              </div>
+              <div className="p-8">
+                <h3 className="text-2xl font-bold mb-4 text-amber-400">Department of Justice</h3>
+                <p className="text-gray-300 leading-relaxed">Judges, prosecutors, and defense attorneys conducting realistic trials and legal proceedings.</p>
+              </div>
             </div>
-            <div className="bg-white/5 backdrop-blur-xl rounded-2xl p-8 border border-white/10 text-center hover:border-cyan-500 transition">
-              <ShieldCheckIcon className="w-16 h-16 mx-auto mb-6 text-amber-400" />
-              <h3 className="text-2xl font-semibold mb-4">Dedicated Staff</h3>
-              <p className="text-gray-400">Fair rule enforcement and constant community support.</p>
+          </div>
+
+          {/* Freelancer – Full-Width Horizontal Banner Below */}
+          <div className="group relative bg-white/5 backdrop-blur-xl rounded-3xl overflow-hidden border border-white/10 hover:border-cyan-500 transition-all duration-500 shadow-2xl">
+            <div className="aspect-[21/9] md:aspect-[32/9] relative overflow-hidden">
+              <img 
+                src="https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=760411349724951" 
+                alt="Diverse civilian life and jobs in the city" 
+                className="w-full h-full object-cover brightness-90 group-hover:brightness-110 group-hover:scale-105 transition duration-700"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
+              <div className="absolute bottom-8 left-8 text-5xl font-black text-cyan-400 drop-shadow-2xl">Freelancer / Civilian Careers</div>
+            </div>
+            <div className="p-10">
+              <p className="text-xl text-gray-300 mb-8 text-center max-w-5xl mx-auto">
+                Endless opportunities for player-driven stories—from public services to entrepreneurship.
+              </p>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 max-w-6xl mx-auto">
+                {[
+                  { name: 'Bus Driver', color: 'cyan', description: 'Operate public buses across the city, transporting passengers and creating RP opportunities around daily commutes and interactions.' },
+                  { name: 'Mechanic', color: 'blue', description: 'Repair and customize vehicles at garages, offering services to civilians and factions while building a reputation in the automotive world.' },
+                  { name: 'Store Owner', color: 'emerald', description: 'Run your own shop, manage inventory, set prices, and engage in economic RP with customers and suppliers.' },
+                  { name: 'Go Postal', color: 'indigo', description: 'Deliver packages and mail throughout the city, navigating routes and handling special deliveries for immersive logistics RP.' },
+                  { name: 'Scuba Diving', color: 'teal', description: 'Explore underwater locations for treasures, salvage, or missions, requiring gear and diving skills for adventurous RP.' },
+                  { name: 'Metal Detecting', color: 'yellow', description: 'Search beaches and parks for hidden valuables using detectors, turning finds into profit or story hooks.' },
+                  { name: 'Hunting', color: 'orange', description: 'Track and hunt wildlife in designated areas, selling pelts and meat while following conservation rules.' },
+                  { name: 'Fishing', color: 'sky', description: 'Cast lines at various spots to catch fish, compete in tournaments, or supply seafood to markets and restaurants.' },
+                  { name: 'Taxi Driver', color: 'amber', description: 'Provide rides to passengers across the city, engaging in conversations and unexpected RP scenarios en route.' },
+                  { name: 'City Electrician', color: 'violet', description: 'Maintain power grids, fix outages, and install wiring for buildings, essential for city infrastructure RP.' },
+                ].map((job, index) => (
+                  <div
+                    key={job.name}
+                    className="bg-white/5 backdrop-blur-xl rounded-2xl border border-white/10 overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300"
+                  >
+                    <button
+                      onClick={() => setOpenJob(openJob === index ? null : index)}
+                      className={`w-full p-6 flex items-center justify-between hover:bg-${job.color}-500/20 transition-all duration-300 group`}
+                    >
+                      <span className="text-lg font-semibold text-gray-200">{job.name}</span>
+                      <ChevronDownIcon
+                        className={`w-6 h-6 text-gray-400 transition-transform duration-300 ${openJob === index ? 'rotate-180' : ''}`}
+                      />
+                    </button>
+                    <div
+                      className={`overflow-hidden transition-all duration-500 ease-in-out ${openJob === index ? 'max-h-40 opacity-100' : 'max-h-0 opacity-0'}`}
+                    >
+                      <div className="p-6 pt-0">
+                        <p className="text-gray-300 text-sm leading-relaxed">{job.description}</p>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
@@ -182,7 +267,6 @@ const Home: React.FC = () => {
                 <ArrowPathIcon className={`w-8 h-8 ${serverInfo.loading ? 'animate-spin' : ''}`} />
               </button>
             </div>
-            {/* (Same status display as before, but larger) */}
             {serverInfo.loading ? (
               <p className="text-center text-2xl py-12">Fetching live data...</p>
             ) : (
@@ -201,114 +285,7 @@ const Home: React.FC = () => {
             )}
           </div>
         </div>
- 
       </section>
-      {/* Factions Section – Professional Bento Grid Layout */}
-<section className="py-24 bg-slate-900/30">
-  <div className="container mx-auto px-6 max-w-7xl">
-    <h2 className="text-5xl font-bold text-center mb-16 bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
-      Factions & Opportunities
-    </h2>
-
-    {/* Bento Grid */}
-    <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-8 mb-8">
-      {/* EMS */}
-      <div className="group relative bg-white/5 backdrop-blur-xl rounded-3xl overflow-hidden border border-white/10 hover:border-emerald-500 transition-all duration-500 shadow-2xl">
-        <div className="aspect-[4/3] relative overflow-hidden">
-          <img 
-            src="https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=2369649800079979" 
-            alt="EMS paramedics responding to an emergency" 
-            className="w-full h-full object-cover brightness-90 group-hover:brightness-110 group-hover:scale-105 transition duration-700"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-          <div className="absolute bottom-6 left-6 text-4xl font-black text-emerald-400 drop-shadow-2xl">EMS</div>
-        </div>
-        <div className="p-8">
-          <h3 className="text-2xl font-bold mb-4 text-emerald-400">Emergency Medical Services</h3>
-          <p className="text-gray-300 leading-relaxed">Dedicated paramedics and firefighters delivering critical care in high-pressure scenarios with advanced medical scripting.</p>
-        </div>
-      </div>
-
-      {/* SASP */}
-      <div className="group relative bg-white/5 backdrop-blur-xl rounded-3xl overflow-hidden border border-white/10 hover:border-blue-500 transition-all duration-500 shadow-2xl">
-        <div className="aspect-[4/3] relative overflow-hidden">
-          <img 
-            src="https://img.gta5-mods.com/q75/images/2018-ford-xlt-f350-superduty-quad-cad-custom-ambulance-els/330616-20190828173812_1.jpg" 
-            alt="SASP officers on highway patrol" 
-            className="w-full h-full object-cover brightness-90 group-hover:brightness-110 group-hover:scale-105 transition duration-700"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-          <div className="absolute bottom-6 left-6 text-4xl font-black text-blue-400 drop-shadow-2xl">SASP</div>
-        </div>
-        <div className="p-8">
-          <h3 className="text-2xl font-bold mb-4 text-blue-400">San Andreas State Police</h3>
-          <p className="text-gray-300 leading-relaxed">Professional law enforcement with structured ranks, highway patrol, investigations, and tactical units.</p>
-        </div>
-      </div>
-
-      {/* DOJ */}
-      <div className="group relative bg-white/5 backdrop-blur-xl rounded-3xl overflow-hidden border border-white/10 hover:border-amber-500 transition-all duration-500 shadow-2xl">
-        <div className="aspect-[4/3] relative overflow-hidden">
-          <img 
-            src="https://rockstarintel.com/wp-content/uploads/2024/09/DOJ-1024x549.jpg" 
-            alt="DOJ courtroom proceedings" 
-            className="w-full h-full object-cover brightness-90 group-hover:brightness-110 group-hover:scale-105 transition duration-700"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-          <div className="absolute bottom-6 left-6 text-4xl font-black text-amber-400 drop-shadow-2xl">DOJ</div>
-        </div>
-        <div className="p-8">
-          <h3 className="text-2xl font-bold mb-4 text-amber-400">Department of Justice</h3>
-          <p className="text-gray-300 leading-relaxed">Judges, prosecutors, and defense attorneys conducting realistic trials and legal proceedings.</p>
-        </div>
-      </div>
-    </div>
-
-   {/* Freelancer – Full-Width Horizontal Banner Below */}
-<div className="group relative bg-white/5 backdrop-blur-xl rounded-3xl overflow-hidden border border-white/10 hover:border-cyan-500 transition-all duration-500 shadow-2xl">
-  <div className="aspect-[21/9] md:aspect-[32/9] relative overflow-hidden">
-    <img 
-      src="https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=760411349724951" 
-      alt="Diverse civilian life and jobs in the city" 
-      className="w-full h-full object-cover brightness-90 group-hover:brightness-110 group-hover:scale-105 transition duration-700"
-    />
-    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
-    <div className="absolute bottom-8 left-8 text-5xl font-black text-cyan-400 drop-shadow-2xl">Freelancer / Civilian Careers</div>
-  </div>
-  <div className="p-10">
-    <p className="text-xl text-gray-300 mb-8 text-center max-w-5xl mx-auto">
-      Endless opportunities for player-driven stories—from public services to entrepreneurship.
-    </p>
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 max-w-6xl mx-auto">
-      {[
-        { name: 'Bus Driver', color: 'cyan', description: 'Operate public buses across the city, transporting passengers and creating RP opportunities around daily commutes and interactions.' },
-        { name: 'Mechanic', color: 'blue', description: 'Repair and customize vehicles at garages, offering services to civilians and factions while building a reputation in the automotive world.' },
-        { name: 'Store Owner', color: 'green', description: 'Run your own shop, manage inventory, set prices, and engage in economic RP with customers and suppliers.' },
-        { name: 'Go Postal', color: 'indigo', description: 'Deliver packages and mail throughout the city, navigating routes and handling special deliveries for immersive logistics RP.' },
-        { name: 'Scuba Diving', color: 'teal', description: 'Explore underwater locations for treasures, salvage, or missions, requiring gear and diving skills for adventurous RP.' },
-        { name: 'Metal Detecting', color: 'yellow', description: 'Search beaches and parks for hidden valuables using detectors, turning finds into profit or story hooks.' },
-        { name: 'Hunting', color: 'orange', description: 'Track and hunt wildlife in designated areas, selling pelts and meat while following conservation rules.' },
-        { name: 'Fishing', color: 'sky', description: 'Cast lines at various spots to catch fish, compete in tournaments, or supply seafood to markets and restaurants.' },
-        { name: 'Taxi Driver', color: 'amber', description: 'Provide rides to passengers across the city, engaging in conversations and unexpected RP scenarios en route.' },
-        { name: 'City Electrician', color: 'violet', description: 'Maintain power grids, fix outages, and install wiring for buildings, essential for city infrastructure RP.' },
-      ].map((job) => (
-        <Accordion key={job.name} className="bg-white/10 rounded-2xl overflow-hidden shadow-lg">
-          <AccordionSummary
-            expandIcon={<ChevronDownIcon className="w-6 h-6 text-gray-400" />}
-            className={`p-5 hover:bg-${job.color}-500/20 transition duration-300 cursor-pointer flex items-center justify-center`}
-          >
-            <span className="font-semibold text-gray-200">{job.name}</span>
-          </AccordionSummary>
-          <AccordionDetails className="p-5 bg-white/5">
-            <p className="text-gray-300 text-sm">{job.description}</p>
-          </AccordionDetails>
-        </Accordion>
-      ))}
-    </div>
-  </div>
-</div>
-  </div>
-</section>
     </div>
   );
 };
