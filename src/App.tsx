@@ -4,6 +4,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import Home from './pages/Home';
 import Rules from './pages/Rules';
+import DisclaimerPopup from './components/DisclaimerPopup';
 
 const App: React.FC = () => {
   return (
@@ -19,7 +20,21 @@ const App: React.FC = () => {
         </main>
         <Footer />
       </div>
+      
+    <div className="flex flex-col min-h-screen">
+      <Header />
+      <main className="flex-1">
+        <DisclaimerPopup />  {/* Add this line */}
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/rules" element={<Rules />} />
+        </Routes>
+      </main>
+      <Footer />
+    </div>
+
     </Router>
+    
   );
 };
 
