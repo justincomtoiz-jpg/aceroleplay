@@ -197,6 +197,79 @@ const Home: React.FC = () => {
             )}
           </div>
         </div>
+        {/* Factions Section */}
+<section className="py-24 bg-slate-900/30">
+  <div className="container mx-auto px-6 max-w-7xl">
+    <h2 className="text-5xl font-bold text-center mb-16 bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
+      Factions & Opportunities
+    </h2>
+
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      {/* EMS */}
+      <div className="group relative bg-white/5 backdrop-blur-xl rounded-3xl overflow-hidden border border-white/10 hover:border-emerald-500 transition-all duration-500">
+        <div className="aspect-video relative overflow-hidden">
+          <img src="https://i.ytimg.com/vi/fnQrtL7rCg8/maxresdefault.jpg" alt="EMS Paramedics responding to emergency" className="w-full h-full object-cover group-hover:scale-110 transition duration-700" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
+          <div className="absolute bottom-4 left-4 text-3xl font-black text-emerald-400">EMS</div>
+        </div>
+        <div className="p-8">
+          <h3 className="text-2xl font-bold mb-4 text-emerald-400">Emergency Medical Services</h3>
+          <p className="text-gray-300">Save lives as a paramedic or firefighter. High-stakes medical RP with advanced equipment and scenarios.</p>
+        </div>
+      </div>
+
+      {/* SASP */}
+      <div className="group relative bg-white/5 backdrop-blur-xl rounded-3xl overflow-hidden border border-white/10 hover:border-blue-500 transition-all duration-500">
+        <div className="aspect-video relative overflow-hidden">
+          <img src="https://i.ytimg.com/vi/cTjBCDyhMCs/maxresdefault.jpg" alt="SASP Highway Patrol" className="w-full h-full object-cover group-hover:scale-110 transition duration-700" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
+          <div className="absolute bottom-4 left-4 text-3xl font-black text-blue-400">SASP</div>
+        </div>
+        <div className="p-8">
+          <h3 className="text-2xl font-bold mb-4 text-blue-400">San Andreas State Police</h3>
+          <p className="text-gray-300">Enforce the law with highway patrol, detective work, and tactical operations in a structured department.</p>
+        </div>
+      </div>
+
+      {/* DOJ */}
+      <div className="group relative bg-white/5 backdrop-blur-xl rounded-3xl overflow-hidden border border-white/10 hover:border-amber-500 transition-all duration-500">
+        <div className="aspect-video relative overflow-hidden">
+          <img src="https://i.ytimg.com/vi/twYpRtZoqVo/maxresdefault.jpg" alt="DOJ Courthouse scene" className="w-full h-full object-cover group-hover:scale-110 transition duration-700" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
+          <div className="absolute bottom-4 left-4 text-3xl font-black text-amber-400">DOJ</div>
+        </div>
+        <div className="p-8">
+          <h3 className="text-2xl font-bold mb-4 text-amber-400">Department of Justice</h3>
+          <p className="text-gray-300">Judges, lawyers, and court officials handling trials, hearings, and legal RP for the state.</p>
+        </div>
+      </div>
+
+      {/* Freelancer – Tiered Submenu */}
+      <div className="group relative bg-white/5 backdrop-blur-xl rounded-3xl overflow-hidden border border-white/10 hover:border-cyan-500 transition-all duration-500 lg:col-span-1 md:col-span-2">
+        <div className="aspect-video relative overflow-hidden">
+          <img src="https://i.ytimg.com/vi/w1Wd35qUCQA/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLDT1rmijwMGK2WM8zMXNwCslYJ8uw" alt="Civilian jobs in the city" className="w-full h-full object-cover group-hover:scale-110 transition duration-700" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
+          <div className="absolute bottom-4 left-4 text-3xl font-black text-cyan-400">Freelancer</div>
+        </div>
+        <div className="p-8">
+          <h3 className="text-2xl font-bold mb-6 text-cyan-400">Civilian Careers</h3>
+          <div className="grid grid-cols-2 gap-4 text-gray-300">
+            <div className="bg-white/10 rounded-xl p-4 hover:bg-white/20 transition">Bus Driver</div>
+            <div className="bg-white/10 rounded-xl p-4 hover:bg-white/20 transition">Mechanic</div>
+            <div className="bg-white/10 rounded-xl p-4 hover:bg-white/20 transition">Store Owner</div>
+            <div className="bg-white/10 rounded-xl p-4 hover:bg-white/20 transition">Go Postal</div>
+            <div className="bg-white/10 rounded-xl p-4 hover:bg-white/20 transition">Scuba Diving</div>
+            <div className="bg-white/10 rounded-xl p-4 hover:bg-white/20 transition">Metal Detecting</div>
+            <div className="bg-white/10 rounded-xl p-4 hover:bg-white/20 transition">Hunting</div>
+            <div className="bg-white/10 rounded-xl p-4 hover:bg-white/20 transition">Fishing</div>
+            <div className="bg-white/10 rounded-xl p-4 hover:bg-white/20 transition">Taxi Driver</div>
+            <div className="bg-white/10 rounded-xl p-4 hover:bg-white/20 transition">City Electrician</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
       </section>
     </div>
   );
