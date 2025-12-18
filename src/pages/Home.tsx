@@ -1,4 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import { ChevronDownIcon } from '@heroicons/react/24/outline';
+import Accordion from '@mui/material/Accordion';
+import AccordionSummary from '@mui/material/AccordionSummary';
+import AccordionDetails from '@mui/material/AccordionDetails';
 import {
   ServerIcon,
   UsersIcon,
@@ -229,7 +233,7 @@ const Home: React.FC = () => {
       <div className="group relative bg-white/5 backdrop-blur-xl rounded-3xl overflow-hidden border border-white/10 hover:border-blue-500 transition-all duration-500 shadow-2xl">
         <div className="aspect-[4/3] relative overflow-hidden">
           <img 
-            src="https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=4159704957638165" 
+            src="https://img.gta5-mods.com/q75/images/2018-ford-xlt-f350-superduty-quad-cad-custom-ambulance-els/330616-20190828173812_1.jpg" 
             alt="SASP officers on highway patrol" 
             className="w-full h-full object-cover brightness-90 group-hover:brightness-110 group-hover:scale-105 transition duration-700"
           />
@@ -246,7 +250,7 @@ const Home: React.FC = () => {
       <div className="group relative bg-white/5 backdrop-blur-xl rounded-3xl overflow-hidden border border-white/10 hover:border-amber-500 transition-all duration-500 shadow-2xl">
         <div className="aspect-[4/3] relative overflow-hidden">
           <img 
-            src="https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=10162507336822298" 
+            src="https://rockstarintel.com/wp-content/uploads/2024/09/DOJ-1024x549.jpg" 
             alt="DOJ courtroom proceedings" 
             className="w-full h-full object-cover brightness-90 group-hover:brightness-110 group-hover:scale-105 transition duration-700"
           />
@@ -261,30 +265,48 @@ const Home: React.FC = () => {
     </div>
 
     {/* Freelancer – Full-Width Horizontal Banner Below */}
-    <div className="group relative bg-white/5 backdrop-blur-xl rounded-3xl overflow-hidden border border-white/10 hover:border-cyan-500 transition-all duration-500 shadow-2xl">
-      <div className="aspect-[21/9] md:aspect-[32/9] relative overflow-hidden">
-        <img 
-          src="https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=760411349724951" 
-          alt="Diverse civilian life and jobs in the city" 
-          className="w-full h-full object-cover brightness-90 group-hover:brightness-110 group-hover:scale-105 transition duration-700"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
-        <div className="absolute bottom-8 left-8 text-5xl font-black text-cyan-400 drop-shadow-2xl">Freelancer / Civilian Careers</div>
-      </div>
-      <div className="p-10">
-        <p className="text-xl text-gray-300 mb-8 text-center max-w-5xl mx-auto">
-          Endless opportunities for player-driven stories—from public services to entrepreneurship.
-        </p>
-        <div className="grid grid-cols-2 md:grid-cols-5 lg:grid-cols-10 gap-6 max-w-6xl mx-auto">
-          {['Bus Driver', 'Mechanic', 'Store Owner', 'Go Postal', 'Scuba Diving', 'Metal Detecting', 'Hunting', 'Fishing', 'Taxi Driver', 'City Electrician'].map((job) => (
-            <div key={job} className="bg-white/10 rounded-2xl p-5 text-center hover:bg-white/20 hover:scale-110 transition duration-300 shadow-lg">
-              <span className="font-semibold text-gray-200">{job}</span>
-            </div>
-          ))}
-        </div>
-      </div>
+<div className="group relative bg-white/5 backdrop-blur-xl rounded-3xl overflow-hidden border border-white/10 hover:border-cyan-500 transition-all duration-500 shadow-2xl">
+  <div className="aspect-[21/9] md:aspect-[32/9] relative overflow-hidden">
+    <img 
+      src="https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=760411349724951" 
+      alt="Diverse civilian life and jobs in the city" 
+      className="w-full h-full object-cover brightness-90 group-hover:brightness-110 group-hover:scale-105 transition duration-700"
+    />
+    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
+    <div className="absolute bottom-8 left-8 text-5xl font-black text-cyan-400 drop-shadow-2xl">Freelancer / Civilian Careers</div>
+  </div>
+  <div className="p-10">
+    <p className="text-xl text-gray-300 mb-8 text-center max-w-5xl mx-auto">
+      Endless opportunities for player-driven stories—from public services to entrepreneurship.
+    </p>
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 max-w-6xl mx-auto">
+      {[
+        { name: 'Bus Driver', color: 'cyan', description: 'Operate public buses across the city, transporting passengers and creating RP opportunities around daily commutes and interactions.' },
+        { name: 'Mechanic', color: 'blue', description: 'Repair and customize vehicles at garages, offering services to civilians and factions while building a reputation in the automotive world.' },
+        { name: 'Store Owner', color: 'green', description: 'Run your own shop, manage inventory, set prices, and engage in economic RP with customers and suppliers.' },
+        { name: 'Go Postal', color: 'indigo', description: 'Deliver packages and mail throughout the city, navigating routes and handling special deliveries for immersive logistics RP.' },
+        { name: 'Scuba Diving', color: 'teal', description: 'Explore underwater locations for treasures, salvage, or missions, requiring gear and diving skills for adventurous RP.' },
+        { name: 'Metal Detecting', color: 'yellow', description: 'Search beaches and parks for hidden valuables using detectors, turning finds into profit or story hooks.' },
+        { name: 'Hunting', color: 'orange', description: 'Track and hunt wildlife in designated areas, selling pelts and meat while following conservation rules.' },
+        { name: 'Fishing', color: 'sky', description: 'Cast lines at various spots to catch fish, compete in tournaments, or supply seafood to markets and restaurants.' },
+        { name: 'Taxi Driver', color: 'amber', description: 'Provide rides to passengers across the city, engaging in conversations and unexpected RP scenarios en route.' },
+        { name: 'City Electrician', color: 'violet', description: 'Maintain power grids, fix outages, and install wiring for buildings, essential for city infrastructure RP.' },
+      ].map((job) => (
+        <Accordion key={job.name} className="bg-white/10 rounded-2xl overflow-hidden shadow-lg">
+          <AccordionSummary
+            expandIcon={<ChevronDownIcon className="w-6 h-6 text-gray-400" />}
+            className={`p-5 hover:bg-${job.color}-500/20 transition duration-300 cursor-pointer`}
+          >
+            <span className="font-semibold text-gray-200 text-center w-full">{job.name}</span>
+          </AccordionSummary>
+          <AccordionDetails className="p-5 bg-white/5">
+            <p className="text-gray-300">{job.description}</p>
+          </AccordionDetails>
+        </Accordion>
+      ))}
     </div>
   </div>
+</div>
 </section>
     </div>
   );
